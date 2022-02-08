@@ -22,22 +22,26 @@ public class chatmeneger : MonoBehaviour, IChatClientListener
 
     public void OnChatStateChange(ChatState state)
     {
-        Debug.Log($"");
+        Debug.Log(state);
     }
 
     public void OnConnected()
     {
-        Debug.Log($"");
+        chatText.text += "/n you connected to chat!";
+        chatClient.Subscribe("globalChat");
     }
 
     public void OnDisconnected()
     {
-        Debug.Log($"");
+        chatClient.Unsubscribe(new string[] { "globalchat" });
     }
 
     public void OnGetMessages(string channelName, string[] senders, object[] messages)
     {
-        Debug.Log($"");
+     for(int i = 0;i < senders.Length;i++)
+        {
+            chatText.text += $"/n[{channelName}]{senders[i]}:{messages[i]}";
+        }
     }
 
     public void OnPrivateMessage(string sender, object message, string channelName)
@@ -52,22 +56,29 @@ public class chatmeneger : MonoBehaviour, IChatClientListener
 
     public void OnSubscribed(string[] channels, bool[] results)
     {
-        Debug.Log($"");
+        for (int i = 0; i < channels.Length; i++)
+        {
+         chatText.text += $"you connected to {channels[i]}";
+        }
+           
     }
 
     public void OnUnsubscribed(string[] channels)
     {
-        Debug.Log($"");
+        for (int i = 0; i < channels.Length; i++)
+        {
+            chatText.text += $"you unconected {channels[i]}";
+        }
     }
 
     public void OnUserSubscribed(string channel, string user)
     {
-        Debug.Log($"");
+        chatText.text += $"user{user} connected to {channel}";
     }
 
     public void OnUserUnsubscribed(string channel, string user)
     {
-        Debug.Log($"");
+        chatText.text += $"user{user} unconnected {channel}";
     }
 
     private void Start()
