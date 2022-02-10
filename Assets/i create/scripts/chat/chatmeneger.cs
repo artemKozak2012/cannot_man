@@ -33,7 +33,7 @@ public class chatmeneger : MonoBehaviour, IChatClientListener
 
     public void OnDisconnected()
     {
-        chatClient.Unsubscribe(new string[] { "globalchat" });
+        chatClient.Unsubscribe(new string[] { "globalChat" });
     }
 
     public void OnGetMessages(string channelName, string[] senders, object[] messages)
@@ -94,7 +94,7 @@ public class chatmeneger : MonoBehaviour, IChatClientListener
     {
         if(textuzername.text == "")
         {
-            chatClient.PublishMessage("globalChal", textMessege);
+            chatClient.PublishMessage("globalChat", textMessege.text);
         }
     }
 }
