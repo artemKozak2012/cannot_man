@@ -106,6 +106,8 @@ public class chatmeneger : MonoBehaviour, IChatClientListener
     [ContextMenu("test")]
     public void SetName()
     {
+       
+
         Debug.Log($"Set name {textuzername.text}");
     }
 }
