@@ -14,7 +14,7 @@ public class chatmeneger : MonoBehaviour, IChatClientListener
     [SerializeField] Text chatText;
     [SerializeField] InputField textMessege;
     [SerializeField] InputField textuzername;
-
+   
     public void DebugReturn(DebugLevel level, string message)
     {
         Debug.Log($"{level} {message}");
@@ -27,7 +27,7 @@ public class chatmeneger : MonoBehaviour, IChatClientListener
 
     public void OnConnected()
     {
-        chatText.text += "/n you connected to chat!";
+        chatText.text = " you connected to chat!";
         chatClient.Subscribe("globalChat");
     }
 
@@ -40,7 +40,8 @@ public class chatmeneger : MonoBehaviour, IChatClientListener
     {
      for(int i = 0;i < senders.Length;i++)
         {
-            chatText.text += $"/n[{channelName}]{senders[i]}:{messages[i]}";
+            
+            chatText.text = $"[{channelName}]{senders[i]}:{messages[i]}";
         }
     }
 
@@ -58,7 +59,7 @@ public class chatmeneger : MonoBehaviour, IChatClientListener
     {
         for (int i = 0; i < channels.Length; i++)
         {
-         chatText.text += $"you connected to {channels[i]}";
+         chatText.text = $"you connected to {channels[i]}";
         }
            
     }
@@ -78,7 +79,7 @@ public class chatmeneger : MonoBehaviour, IChatClientListener
 
     public void OnUserUnsubscribed(string channel, string user)
     {
-        chatText.text += $"user{user} unconnected {channel}";
+        chatText.text += $"user{user} unconnected from {channel}";
     }
 
     private void Start()
@@ -88,12 +89,14 @@ public class chatmeneger : MonoBehaviour, IChatClientListener
     }
     private void Update()
     {
+       
         chatClient.Service();
     }
     public void SentButton()
     {
         if(textuzername.text == "")
         {
+            
             chatClient.PublishMessage("globalChat", textMessege.text);
         }
     }

@@ -7,6 +7,9 @@ public class slot : MonoBehaviour
 {
     private inwintary inwintary;
     public int i;
+    public int delay;
+
+  
 
     private void Awake()
     {
@@ -21,6 +24,8 @@ public class slot : MonoBehaviour
         inv.slots = new GameObject[] { gameObject };
     }
 
+  
+
     private void OnDestroy()
     {
         GameManager.PlayerCreated -= OnPlayerCreated;
@@ -31,13 +36,7 @@ public class slot : MonoBehaviour
         inwintary = GameObject.FindGameObjectWithTag("Player").GetComponent<inwintary>();
     }
 
-    private void Update()
-    {
-        if (transform.childCount <= 0)
-        {
-            inwintary.isFull[i] = false;
-        }
-    }
+   
 
     public void DropItem()
     {
@@ -47,4 +46,5 @@ public class slot : MonoBehaviour
             GameObject.Destroy(child.gameObject);
         }  
     }
+   
 }

@@ -73,6 +73,7 @@
     <Compile Include="Assets/i create/scripts/bullet.cs" />
     <Compile Include="Assets/not i create/Joystick Pack/Examples/JoystickPlayerExample.cs" />
     <Compile Include="Assets/i create/scripts/klavishas.cs" />
+    <Compile Include="Assets/i create/scripts/chat/seeorhidechat.cs" />
     <Compile Include="Assets/i create/scripts/Enemy.cs" />
     <Compile Include="Assets/i create/scripts/LobyManager.cs" />
     <Compile Include="Assets/not i create/Joystick Pack/Scripts/Joysticks/DynamicJoystick.cs" />
@@ -93,7 +94,6 @@
     <Compile Include="Assets/not i create/Photon/PhotonChat/Demos/DemoChat/FriendItem.cs" />
     <Compile Include="Assets/not i create/Photon/PhotonChat/Demos/DemoChat/ChatGui.cs" />
     <Compile Include="Assets/not i create/Photon/PhotonChat/Demos/Common/TextToggleIsOnTransition.cs" />
-    <Compile Include="Assets/i create/scripts/2 Map.cs" />
     <Compile Include="Assets/not i create/Photon/PhotonChat/Demos/Common/OnStartDelete.cs" />
     <Compile Include="Assets/i create/scripts/pickup.cs" />
     <Compile Include="Assets/i create/scripts/inwintary.cs" />
