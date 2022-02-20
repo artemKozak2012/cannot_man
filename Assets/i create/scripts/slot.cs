@@ -21,7 +21,7 @@ public class slot : MonoBehaviour
     {
         var player = GameObject.FindGameObjectWithTag("Player");
         var inv = player.GetComponent<inwintary>();
-        inv.slots = new GameObject[] { gameObject };
+        inv.slots = new GameObject[] { transform.gameObject };
     }
 
   

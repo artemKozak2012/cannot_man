@@ -681,9 +681,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd1504e0d4899d41bfc362a801145af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFull: 00
-  slots:
-  - {fileID: 0}
+  isFull: 
+  slots: []
 --- !u!50 &2634757112207415990
 Rigidbody2D:
   serializedVersion: 4
@@ -1072,7 +1071,7 @@ GameObject:
   - component: {fileID: 2634757112870290424}
   m_Layer: 0
   m_Name: iye-2
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -9,12 +9,12 @@ using UnityEngine.UI;
 public class chatmeneger : MonoBehaviour, IChatClientListener
 {
     ChatClient chatClient;
-    [SerializeField] string userID;
 
     [SerializeField] Text chatText;
     [SerializeField] InputField textMessege;
     [SerializeField] InputField textuzername;
-   
+    
+    
     public void DebugReturn(DebugLevel level, string message)
     {
         Debug.Log($"{level} {message}");
@@ -40,7 +40,6 @@ public class chatmeneger : MonoBehaviour, IChatClientListener
     {
      for(int i = 0;i < senders.Length;i++)
         {
-            
             chatText.text = $"[{channelName}]{senders[i]}:{messages[i]}";
         }
     }
@@ -85,7 +84,7 @@ public class chatmeneger : MonoBehaviour, IChatClientListener
     private void Start()
     {
         chatClient = new ChatClient(this);
-        chatClient.Connect(PhotonNetwork.PhotonServerSettings.AppSettings.AppIdChat, PhotonNetwork.PhotonServerSettings.AppSettings.AppVersion, new AuthenticationValues(userID));
+        chatClient.Connect(PhotonNetwork.PhotonServerSettings.AppSettings.AppIdChat, PhotonNetwork.PhotonServerSettings.AppSettings.AppVersion, new AuthenticationValues(textuzername.text));
     }
     private void Update()
     {
@@ -94,10 +93,19 @@ public class chatmeneger : MonoBehaviour, IChatClientListener
     }
     public void SentButton()
     {
-        if(textuzername.text == "")
+        if(textMessege.text != "")
         {
-            
             chatClient.PublishMessage("globalChat", textMessege.text);
         }
+        else
+        {
+            Debug.Log($"cannot send empty message");
+        }
+    }
+
+    [ContextMenu("test")]
+    public void SetName()
+    {
+        Debug.Log($"Set name {textuzername.text}");
     }
 }

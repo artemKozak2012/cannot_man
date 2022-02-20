@@ -27,11 +27,11 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        Debug.LogFormat("Player (0) entered game", newPlayer.NickName);
+        Debug.LogFormat($"Player {newPlayer.NickName} entered game");
     }
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-        Debug.LogFormat("Player (0) left game", otherPlayer.NickName); 
+        Debug.LogFormat($"Player {otherPlayer.NickName} left game"); 
  }
    public void Leave()
     {
