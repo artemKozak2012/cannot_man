@@ -17,12 +17,17 @@ public class seeorhidechat : MonoBehaviour
     {
         
     }
-    public void hideChat()
+    public void click()
     {
+        if(chatUI.active = true)
+        {
         chatUI.gameObject.SetActive(false);
-    }
-    public void seeChat()
-    {
+        }
+        else
+        {
         chatUI.gameObject.SetActive(true);
+        }
     }
+
+ 
 }

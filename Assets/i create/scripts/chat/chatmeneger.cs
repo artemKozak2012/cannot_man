@@ -8,13 +8,17 @@ using UnityEngine.UI;
 
 public class chatmeneger : MonoBehaviour, IChatClientListener
 {
+  
+    
+   
     ChatClient chatClient;
-
     [SerializeField] Text chatText;
     [SerializeField] InputField textMessege;
-    [SerializeField] InputField textuzername;
-    
-    
+    [SerializeField] InputField textusername;
+    [SerializeField] InputField inputname;
+
+    [SerializeField] string userID;
+
     public void DebugReturn(DebugLevel level, string message)
     {
         Debug.Log($"{level} {message}");
@@ -41,17 +45,19 @@ public class chatmeneger : MonoBehaviour, IChatClientListener
      for(int i = 0;i < senders.Length;i++)
         {
             chatText.text = $"[{channelName}]{senders[i]}:{messages[i]}";
+            Debug.Log($"OnGetMessages" + senders[i]);
         }
     }
 
     public void OnPrivateMessage(string sender, object message, string channelName)
     {
-        Debug.Log($"sdfsdf" + sender);
+        chatText.text = $"[{channelName}]{sender}:{message}";
+        Debug.Log($"OnPrivateMessage" + sender);
     }
 
     public void OnStatusUpdate(string user, int status, bool gotMessage, object message)
     {
-        Debug.Log($"sdf {user} sdf");
+        Debug.Log($"OnStatusUpdate {user} sdf");
     }
 
     public void OnSubscribed(string[] channels, bool[] results)
@@ -67,7 +73,7 @@ public class chatmeneger : MonoBehaviour, IChatClientListener
     {
         for (int i = 0; i < channels.Length; i++)
         {
-            chatText.text += $"you unconected {channels[i]}";
+            chatText.text += $"you disconected {channels[i]}";
         }
     }
 
@@ -84,7 +90,7 @@ public class chatmeneger : MonoBehaviour, IChatClientListener
     private void Start()
     {
         chatClient = new ChatClient(this);
-        chatClient.Connect(PhotonNetwork.PhotonServerSettings.AppSettings.AppIdChat, PhotonNetwork.PhotonServerSettings.AppSettings.AppVersion, new AuthenticationValues(textuzername.text));
+        //chatClient.Connect(PhotonNetwork.PhotonServerSettings.AppSettings.AppIdChat, PhotonNetwork.PhotonServerSettings.AppSettings.AppVersion, new AuthenticationValues(textuzername.text));
     }
     private void Update()
     {
@@ -108,6 +114,12 @@ public class chatmeneger : MonoBehaviour, IChatClientListener
     {
        
 
-        Debug.Log($"Set name {textuzername.text}");
+        Debug.Log($"Set name {textusername.text}");
+    }
+
+    public void LoginButton()
+    {
+        userID = inputname.text;
+        chatClient.Connect(PhotonNetwork.PhotonServerSettings.AppSettings.AppIdChat, PhotonNetwork.PhotonServerSettings.AppSettings.AppVersion, new AuthenticationValues(textusername.text));
     }
 }

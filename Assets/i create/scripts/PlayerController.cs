@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviourPunCallbacks
     {
         if (!photonview.IsMine) return;
         {
- moveInput = Joystick.Horizontal;
+        moveInput = Joystick.Horizontal;
         rb.velocity = new Vector3(moveInput * speed, rb.velocity.y);
         if (FacingRight == false && moveInput > 0)
         {

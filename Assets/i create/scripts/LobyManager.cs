@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 
 public class LobyManager : MonoBehaviourPunCallbacks
 {
@@ -26,7 +27,14 @@ public class LobyManager : MonoBehaviourPunCallbacks
     
     public void JoinRoom()
     {
-        PhotonNetwork.JoinRandomRoom();
+        if (PhotonNetwork.NetworkClientState == ClientState.ConnectedToMasterServer)
+        {
+            PhotonNetwork.JoinRandomRoom();
+        }
+        else
+        {
+            Debug.LogError("Can't join random room now, client is not ready");
+        }
     }
      
     public override void OnJoinedRoom()
