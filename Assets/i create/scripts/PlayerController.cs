@@ -74,12 +74,20 @@ public class PlayerController : MonoBehaviourPunCallbacks
         else
         {
             anim.SetBool("isGo", true);
+        } 
+          anim.SetTrigger("takeOf");
+
+        if(isGrounded = true)
+        {
+         anim.SetBool("isJumping",true);
         }
-
-
+        else
+        {
+            anim.SetBool("isJumping",false);
         }
             }
         }
+         }
        
         
         

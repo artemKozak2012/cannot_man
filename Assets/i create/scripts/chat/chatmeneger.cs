@@ -10,7 +10,7 @@ public class chatmeneger : MonoBehaviour, IChatClientListener
 {
   
     
-   
+    
     ChatClient chatClient;
     [SerializeField] Text chatText;
     [SerializeField] InputField textMessege;
@@ -18,7 +18,6 @@ public class chatmeneger : MonoBehaviour, IChatClientListener
     [SerializeField] InputField inputname;
 
     [SerializeField] string userID;
-
     public void DebugReturn(DebugLevel level, string message)
     {
         Debug.Log($"{level} {message}");
@@ -119,7 +118,9 @@ public class chatmeneger : MonoBehaviour, IChatClientListener
 
     public void LoginButton()
     {
+        
         userID = inputname.text;
         chatClient.Connect(PhotonNetwork.PhotonServerSettings.AppSettings.AppIdChat, PhotonNetwork.PhotonServerSettings.AppSettings.AppVersion, new AuthenticationValues(textusername.text));
+        
     }
 }
